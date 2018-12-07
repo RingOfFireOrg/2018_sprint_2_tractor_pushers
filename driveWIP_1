@@ -1,10 +1,22 @@
+/*
 # 2018_sprint_2_tractor_pushers
 Sprint 2 code
-/*
-Motor wheel pins: 10,11,12,13
-Grabber pins: 8,9
+
+Notes:
+-Motor wheel pins: 10,11,12,13
+-Grabber pins: 8,9
+
+To-Do List:
+-L&R values
+-consider reverse turn vs forward turn?
+-keyboard run
+-check if all headers are in file
+-make code for start up, emergency stop
+-autonomous?
+-check code, test upload
 */
 
+//-------------------------------------------
 #include "ServoDriveTrain.h"
 #include <time.h>
 #include <Servo.h>
@@ -16,9 +28,10 @@ Grabber pins: 8,9
 #define SERVO_FWD_L 0 //FWD_L
 #define SERVO_REV_L 180 //REV_L
 
-//Need to define turn L&R values
+//Need to define turn L&R values here
 
 #define SERVO_STOP 90 //STOP
+//-------------------------------------------
 
 //Pin numbers to motors
 const int GrabberL=8;
