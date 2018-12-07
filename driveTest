@@ -1,14 +1,19 @@
 #include <time.h>
 #include <Servo.h>
 //add header for keyboard input and on WIP code
+//Note: Once code has been finished tested here, move finished drive code over to WIP code
 
+//-----------------------------------------------------
+//Need to define turn L&R values here, and on WIP code
 #define SERVO_FWD_R 180 //FWD_R
 #define SERVO_REV_R 0 //REV_R
+#define SERVO_TurnL_R 135 //adjust values
+#define SERVO_TurnR_R 45 //adjust values
 
 #define SERVO_FWD_L 0 //FWD_L
 #define SERVO_REV_L 180 //REV_L
-
-//Need to define turn L&R values here, and on WIP code
+#define SERVO_TurnL_R 45 //adjust values
+#define SERVO_TurnR_R 135 //adjust values
 
 #define SERVO_STOP 90 //STOP
 //--------------------------------
@@ -25,6 +30,7 @@ char command = ds.readInputIfAvailable();
 //--------------------------------
 
 void setup(){
+//check orientation, adjust default values when needed
   leftFront_Motor.write(SERVO_FWD_L);
   leftBack_Motor.write(SERVO_FWD_L);
   rightFront_Motor.write(SERVO_FWD_R);
@@ -38,36 +44,72 @@ void loop(){
 }
 
 void test_setup(){
-  //test forward
-    leftFront_Motor.write(SERVO_FWD_L);
-    leftBack_Motor.write(SERVO_FWD_L);
-    rightFront_Motor.write(SERVO_FWD_R);
-    rightBack_Motor.write(SERVO_FWD_R);
-  //test backward
-    leftFront_Motor.write(SERVO_REV_L);
-    leftBack_Motor.write(SERVO_REV_L);
-    rightFront_Motor.write(SERVO_REV_R);
-    rightBack_Motor.write(SERVO_REV_R);
-  //test right turn (turn 2 or all 4 wheels?)
-  
-  //test left turn (turn 2 or all 4 wheels?)
-  
+  forwardDrive();
+  stopDrive();
+  backwardDrive();
+  stopDrive();
+  rightDrive();
+  stopDrive();
+  leftDrive();
+  stopDrive();
 }
 
 void test_inputResponse(command){
 //elif? I have no idea what language I'm supposed to be using anymore
-//else if= arduino/weird c++/c thing, elif=python
+//else if= arduino/weird c++/c thing, elif=python, and that switch(input): then case this???
 char list={'w','s','a','d'};//input keyboard
   if(command=list[0]){//forward
-  
+    forwardDrive();
   }
   else if(command=list[1]){//backward
-  
+    backwardDrive();
   }
   else if(command=list[2]){//left
-  
+    leftDrive();
   }
   else if(command=list[3]){//right
-  
+    rightDrive();
   }
+  else{//stop
+    stopDrive();
+  }
+}
+
+void forwardDrive(){
+  //test forward
+  leftFront_Motor.write(SERVO_FWD_L);
+  leftBack_Motor.write(SERVO_FWD_L);
+  rightFront_Motor.write(SERVO_FWD_R);
+  rightBack_Motor.write(SERVO_FWD_R);
+}
+
+void backwardDrive(){
+  //test backward
+  leftFront_Motor.write(SERVO_REV_L);
+  leftBack_Motor.write(SERVO_REV_L);
+  rightFront_Motor.write(SERVO_REV_R);
+  rightBack_Motor.write(SERVO_REV_R);
+}
+
+void rightDrive(){
+  //test right turn (turn 2 or all 4 wheels?)
+  leftFront_Motor.write(SERVO_TurnR_L);
+  leftBack_Motor.write(SERVO_TurnR_L);
+  rightFront_Motor.write(SERVO_TurnR_R);
+  rightBack_Motor.write(SERVO_TurnR_R);
+}
+
+void leftDrive(){
+  //test left turn (turn 2 or all 4 wheels?)
+  leftFront_Motor.write(SERVO_TurnL_L);
+  leftBack_Motor.write(SERVO_TurnL_L);
+  rightFront_Motor.write(SERVO_TurnL_R);
+  rightBack_Motor.write(SERVO_TurnL_R);
+}
+
+void stopDrive(){
+  leftFront_Motor.write(SERVO_STOP);
+  leftBack_Motor.write(SERVO_STOP);
+  rightFront_Motor.write(SERVO_STOP);
+  rightBack_Motor.write(SERVO_STOP);
 }
