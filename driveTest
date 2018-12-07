@@ -1,0 +1,73 @@
+#include <time.h>
+#include <Servo.h>
+//add header for keyboard input and on WIP code
+
+#define SERVO_FWD_R 180 //FWD_R
+#define SERVO_REV_R 0 //REV_R
+
+#define SERVO_FWD_L 0 //FWD_L
+#define SERVO_REV_L 180 //REV_L
+
+//Need to define turn L&R values here, and on WIP code
+
+#define SERVO_STOP 90 //STOP
+//--------------------------------
+//Pin numbers to motors
+const int GrabberL=8;
+const int GrabberR=9;
+const int leftFront_Motor=10;
+const int leftBack_Motor=11;
+const int rightFront_Motor=12;
+const int rightBack_Motor=13:
+//--------------------------------
+char command = ds.readInputIfAvailable();
+
+//--------------------------------
+
+void setup(){
+  leftFront_Motor.write(SERVO_FWD_L);
+  leftBack_Motor.write(SERVO_FWD_L);
+  rightFront_Motor.write(SERVO_FWD_R);
+  rightBack_Motor.write(SERVO_FWD_R);
+  test_setup();
+}
+
+void loop(){
+  input=ds.readInputIfAvailable();
+  inputReponse(command);
+}
+
+void test_setup(){
+  //test forward
+    leftFront_Motor.write(SERVO_FWD_L);
+    leftBack_Motor.write(SERVO_FWD_L);
+    rightFront_Motor.write(SERVO_FWD_R);
+    rightBack_Motor.write(SERVO_FWD_R);
+  //test backward
+    leftFront_Motor.write(SERVO_REV_L);
+    leftBack_Motor.write(SERVO_REV_L);
+    rightFront_Motor.write(SERVO_REV_R);
+    rightBack_Motor.write(SERVO_REV_R);
+  //test right turn (turn 2 or all 4 wheels?)
+  
+  //test left turn (turn 2 or all 4 wheels?)
+  
+}
+
+void test_inputResponse(command){
+//elif? I have no idea what language I'm supposed to be using anymore
+//else if= arduino/weird c++/c thing, elif=python
+char list={'w','s','a','d'};//input keyboard
+  if(command=list[0]){//forward
+  
+  }
+  else if(command=list[1]){//backward
+  
+  }
+  else if(command=list[2]){//left
+  
+  }
+  else if(command=list[3]){//right
+  
+  }
+}
