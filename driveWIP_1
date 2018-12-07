@@ -12,6 +12,7 @@ To-Do List:
 -keyboard run
 -check if all headers are in file
 -make code for start up, emergency stop
+-add for LED commands? (signal activation, what command given, etc.?)
 -autonomous?
 -check code, test upload
 */
@@ -21,6 +22,8 @@ To-Do List:
 #include <time.h>
 #include <Servo.h>
 #include "ds_interface.h"
+
+//-------------------------------------------
 
 #define SERVO_FWD_R 180 //FWD_R
 #define SERVO_REV_R 0 //REV_R
@@ -32,7 +35,6 @@ To-Do List:
 
 #define SERVO_STOP 90 //STOP
 //-------------------------------------------
-
 //Pin numbers to motors
 const int GrabberL=8;
 const int GrabberR=9;
@@ -40,48 +42,51 @@ const int leftFront_Motor=10;
 const int leftBack_Motor=11;
 const int rightFront_Motor=12;
 const int rightBack_Motor=13:
+//-------------------------------------------
+//add more other variables here
+char input = ds.readInputIfAvailable();
+char command='';
 
-input = ds.readInputIfAvailable();
-
-void driveCommand(){
-
-}
-
-void driveWheel(command){
-  switch(command){
-    case forward:
-      leftFront_Motor.write(SERVO_FWD_L);
-      leftBack_Motor.write(SERVO_FWD_L);
-      rightFront_Motor.write(SERVO_FWD_R);
-      rightBack_Motor.write(SERVO_FWD_R);
-      break;
-    case backward:
-      leftFront_Motor.write(SERVO_);
-      leftBack_Motor.write(SERVO_);
-      rightFront_Motor.write(SERVO_);
-      rightBack_Motor.write(SERVO_);
-      break;
-    case right:
-      leftFront_Motor.write(SERVO_);
-      leftBack_Motor.write(SERVO_);
-      rightFront_Motor.write(SERVO_);
-      rightBack_Motor.write(SERVO_);
-      break;
-    case left:
-      leftFront_Motor.write(SERVO_);
-      leftBack_Motor.write(SERVO_);
-      rightFront_Motor.write(SERVO_);
-      rightBack_Motor.write(SERVO_);
-      break;
-    case stop:
-      leftFront_Motor.write(SERVO_STOP);
-      leftBack_Motor.write(SERVO_STOP);
-      rightFront_Motor.write(SERVO_STOP);
-      rightBack_Motor.write(SERVO_STOP);
-      break;
+void loop(){
+  input= ds.readInputIfAvailable();
+  
+  void driveCommand(input){
+  char command[]={'w','s','a','d'} //front, back, left, right
+    switch(input){ //switch to if and elif?? I don't understand the switch() and case this: format
+      case forward:
+        leftFront_Motor.write(SERVO_FWD_L);
+        leftBack_Motor.write(SERVO_FWD_L);
+        rightFront_Motor.write(SERVO_FWD_R);
+        rightBack_Motor.write(SERVO_FWD_R);
+        break;
+      case backward:
+        leftFront_Motor.write(SERVO_);
+        leftBack_Motor.write(SERVO_);
+        rightFront_Motor.write(SERVO_);
+        rightBack_Motor.write(SERVO_);
+        break;
+      case right:
+        leftFront_Motor.write(SERVO_);
+        leftBack_Motor.write(SERVO_);
+        rightFront_Motor.write(SERVO_);
+        rightBack_Motor.write(SERVO_);
+        break;
+      case left:
+        leftFront_Motor.write(SERVO_);
+        leftBack_Motor.write(SERVO_);
+        rightFront_Motor.write(SERVO_);
+        rightBack_Motor.write(SERVO_);
+        break;
+      case stop:
+        leftFront_Motor.write(SERVO_STOP);
+        leftBack_Motor.write(SERVO_STOP);
+        rightFront_Motor.write(SERVO_STOP);
+        rightBack_Motor.write(SERVO_STOP);
+        break;
+    }
   }
-}
 
-void operateGrabber(){
+  void operateGrabber(){
 
+  }
 }
