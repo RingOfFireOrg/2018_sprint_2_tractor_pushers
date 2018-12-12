@@ -5,56 +5,62 @@
 
 //-----------------------------------------------------
 //Need to define turn L&R values here, and on WIP code
-#define SERVO_FWD_R 180 //FWD_R
-#define SERVO_REV_R 0 //REV_R
-#define SERVO_TurnL_R 135 //adjust values
+#define SERVO_FWD_R 0 //FWD_R
+#define SERVO_REV_R 180 //REV_R
+#define SERVO_TurnR_L 135 //adjust values
 #define SERVO_TurnR_R 45 //adjust values
 
-#define SERVO_FWD_L 0 //FWD_L
-#define SERVO_REV_L 180 //REV_L
+#define SERVO_FWD_L 180 //FWD_L
+#define SERVO_REV_L 0 //REV_L
 #define SERVO_TurnL_R 45 //adjust values
-#define SERVO_TurnR_R 135 //adjust values
+#define SERVO_TurnL_L 135 //adjust values
 
 #define SERVO_STOP 90 //STOP
 //--------------------------------
 //Pin numbers to motors
 const int GrabberL=8;
 const int GrabberR=9;
-const int leftFront_Motor=10;
-const int leftBack_Motor=11;
-const int rightFront_Motor=12;
-const int rightBack_Motor=13:
+const int leftFront_MotorPin=11;
+const int leftBack_MotorPin=10;
+const int rightFront_MotorPin=12;
+const int rightBack_MotorPin=13;
+
 //--------------------------------
-char command = ds.readInputIfAvailable();
+// Servos for motors
+Servo leftFront_Motor;
+Servo leftBack_Motor;
+Servo rightBack_Motor;
+Servo rightFront_Motor;
 
 //--------------------------------
 
 void setup(){
 //check orientation, adjust default values when needed
-  leftFront_Motor.write(SERVO_FWD_L);
-  leftBack_Motor.write(SERVO_FWD_L);
-  rightFront_Motor.write(SERVO_FWD_R);
-  rightBack_Motor.write(SERVO_FWD_R);
+  leftFront_Motor.attach(leftFront_MotorPin);
+  leftBack_Motor.attach(leftBack_MotorPin);
+  rightFront_Motor.attach(rightFront_MotorPin);
+  rightBack_Motor.attach(rightBack_MotorPin);
   test_setup();
 }
 
 void loop(){
-  input=ds.readInputIfAvailable();
-  inputReponse(command);
+  // input=ds.readInputIfAvailable();
+  // inputReponse(command);
 }
 
 void test_setup(){
-  forwardDrive();
+  /* forwardDrive();
   stopDrive();
   backwardDrive();
-  stopDrive();
+  stopDrive();*/
   rightDrive();
-  stopDrive();
+  /*stopDrive();
   leftDrive();
   stopDrive();
+  */
 }
 
-void test_inputResponse(command){
+/*void test_inputResponse(char command){
 //elif? I have no idea what language I'm supposed to be using anymore
 //else if= arduino/weird c++/c thing, elif=python, and that switch(input): then case this???
 char list={'w','s','a','d'};//input keyboard
@@ -73,7 +79,7 @@ char list={'w','s','a','d'};//input keyboard
   else{//stop
     stopDrive();
   }
-}
+}*/
 
 void forwardDrive(){
   //test forward
