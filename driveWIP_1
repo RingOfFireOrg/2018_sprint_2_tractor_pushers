@@ -43,6 +43,10 @@ const int leftBack_Motor=11;
 const int rightFront_Motor=12;
 const int rightBack_Motor=13:
 //-------------------------------------------
+char drive[]={'s','w','x','a','d','q','e'}; //stop, front, back, straight left, straight right, turn left, turn right
+char grabber[]={'r','f'}; //grab, release; switch later?
+char //editing here
+//-------------------------------------------
 //Default setup and functions go here
 /**
 Notes:
@@ -53,20 +57,20 @@ char input = ds.readInputIfAvailable();
 char command='';
 
 void commandDirectory(input){
-  if(){//grabbers
-  
+  char temp=drive+grabber;//0-6, 7-8
+  for(int i=0; i<9; i++){
+    if(){
+    }
+    else if(){
+    }
+    else{
+    }
   }
-  else if(){//motion
   
-  }
-  else{//emergency stop, space
-  
-  }
 }
 
 
 void driveCommand(input){
-  char command[]={'s','w','x','a','d'} //stop, front, back, left, right
     switch(input){ //switch to if and elif?? I don't understand the switch() and case this: format
      case stop:
         leftFront_Motor.write(SERVO_FWD_L);
