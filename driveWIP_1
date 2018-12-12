@@ -25,11 +25,11 @@ To-Do List:
 
 //-------------------------------------------
 
-#define SERVO_FWD_R 180 //FWD_R
-#define SERVO_REV_R 0 //REV_R
+#define SERVO_FWD_R 0 //FWD_R
+#define SERVO_REV_R 180 //REV_R
 
-#define SERVO_FWD_L 0 //FWD_L
-#define SERVO_REV_L 180 //REV_L
+#define SERVO_FWD_L 180 //FWD_L
+#define SERVO_REV_L 0 //REV_L
 
 //Need to define turn L&R values here
 
@@ -43,17 +43,37 @@ const int leftBack_Motor=11;
 const int rightFront_Motor=12;
 const int rightBack_Motor=13:
 //-------------------------------------------
+//Default setup and functions go here
+/**
+Notes:
+Align grabber motion with L/R motor settings (forward=outward for grabbers)
+**/
 //add more other variables here
 char input = ds.readInputIfAvailable();
 char command='';
 
-void loop(){
-  input= ds.readInputIfAvailable();
+void commandDirectory(input){
+  if(){//grabbers
   
-  void driveCommand(input){
-  char command[]={'w','s','a','d'} //front, back, left, right
+  }
+  else if(){//motion
+  
+  }
+  else{//emergency stop, space
+  
+  }
+}
+
+
+void driveCommand(input){
+  char command[]={'s','w','x','a','d'} //stop, front, back, left, right
     switch(input){ //switch to if and elif?? I don't understand the switch() and case this: format
-      case forward:
+     case stop:
+        leftFront_Motor.write(SERVO_FWD_L);
+        leftBack_Motor.write(SERVO_FWD_L);
+        rightFront_Motor.write(SERVO_FWD_R);
+        rightBack_Motor.write(SERVO_FWD_R);
+     case forward:
         leftFront_Motor.write(SERVO_FWD_L);
         leftBack_Motor.write(SERVO_FWD_L);
         rightFront_Motor.write(SERVO_FWD_R);
@@ -86,6 +106,10 @@ void loop(){
     }
   }
 
+//-------------------------------------------
+void loop(){
+  input= ds.readInputIfAvailable();
+  driveCommand(input);
   void operateGrabber(){
 
   }
