@@ -45,7 +45,8 @@ const int rightBack_Motor=13:
 //-------------------------------------------
 char drive[]={'s','w','x','a','d','q','e'}; //stop, front, back, straight left, straight right, turn left, turn right
 char grabber[]={'r','f'}; //grab, release; switch later?
-char //editing here
+char emergencyStop=' ';//editing here
+bool emergencySwitch=false;
 //-------------------------------------------
 //Default setup and functions go here
 /**
@@ -57,13 +58,26 @@ char input = ds.readInputIfAvailable();
 char command='';
 
 void commandDirectory(input){
-  char temp=drive+grabber;//0-6, 7-8
-  for(int i=0; i<9; i++){
-    if(){
-    }
-    else if(){
-    }
-    else{
+  char temp=drive+grabber;//0, 1-7, 8-9 for emergencyStop, drive, and grabber
+  for(int i=0; i<10; i++){
+    if(input==temp[i]){
+      if(i==0){//emergencystop
+        if(!emergencySwitch){//if false
+          emergencySwitch=true;
+        }
+        else if(emergencySwitch){//if true
+          emergencySwitch=false;
+        }
+      }
+      else if((i>0)&&(i<8)&&(emergencySwitch)){//drive
+        
+      }
+      else if(((i==8)||(i==9))&&(emergencySwitch)){//grabber
+        
+      }
+      else{//?
+      
+      }
     }
   }
   
@@ -111,6 +125,13 @@ void driveCommand(input){
   }
 
 //-------------------------------------------
+void setup(){
+  leftFront_Motor.attach(leftFront_MotorPin);
+  leftBack_Motor.attach(leftBack_MotorPin);
+  rightFront_Motor.attach(rightFront_MotorPin);
+  rightBack_Motor.attach(rightBack_MotorPin);
+}
+
 void loop(){
   input= ds.readInputIfAvailable();
   driveCommand(input);
