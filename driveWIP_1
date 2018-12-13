@@ -22,7 +22,7 @@ To-Do List:
 #include "ds_interface.h"
 
 //-------------------------------------------
-
+//check?
 #define SERVO_FWD_R 0 //FWD_R
 #define SERVO_REV_R 180 //REV_R
 
@@ -55,8 +55,6 @@ bool emergencySwitch=false;
 //-------------------------------------------
 
 /*
--Default setup and functions go here
--add more other variables here
 -Align grabber motion with L/R motor settings (forward=outward for grabbers)
 */
 
@@ -89,12 +87,14 @@ void commandDirectory(input){
   
 }
 
-void grabberCommand(input){//check grabber spin orientation
+void grabberCommand(input){//check grabber spin orientation?
   if(input==grabber[0]){//grab
-    
+    leftGrab_Motor.write(SERVO_FWD_L);
+    rightGrab_Motor.write(SERVO_FWD_R);
   }
   else if(input==grabber[1]){//release
-    
+    leftGrab_Motor.write(SERVO_REV_L);
+    rightGrab_Motor.write(SERVO_REV_R);
   }
 }
 
