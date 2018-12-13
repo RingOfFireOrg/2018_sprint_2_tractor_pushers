@@ -37,6 +37,9 @@ bool emergencySwitch=false;
 char input;
 char command='';
   
+DriveHeader();
+virtual ~DriveHeader();
+  
 void commandDirectory(char input);
 
 void grabberCommand(char input);
