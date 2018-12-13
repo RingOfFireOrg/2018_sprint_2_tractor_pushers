@@ -50,6 +50,7 @@ void DriveHeader::commandDirectory(char input){
     if(input==temp[i]){
       if(i==0){//emergencystop
         emergencySwitch=!emergencySwitch;
+        driveCommand('s');
       }
       else if((i>0)&&(i<8)&&(emergencySwitch)){//drive
         driveCommand(input);
