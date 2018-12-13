@@ -1,12 +1,17 @@
+#ifndef DRIVE_HEADER_H_INCLUDED
+#define DRIVE_HEADER_H_INCLUDED
+
 #include "ServoDriveTrain.h"
 #include <time.h>
 #include <Servo.h>
 #include "ds_interface.h"
 
-class driveHeader{
+/*
 # 2018_sprint_2_tractor_pushers
 Sprint 2 code Header
+*/
 
+//-------------------------------------------
 //check?
 #define SERVO_FWD_R 0 //FWD_R
 #define SERVO_REV_R 180 //REV_R
@@ -21,7 +26,8 @@ Sprint 2 code Header
 #define SERVO_TurnL_L 135 
 
 #define SERVO_STOP 90 //STOP
-//-------------------------------------------
+
+class DriveHeader{
 //Pin numbers to motors
 const int leftGrab_MotorPin=8;
 const int rightGrab_MotorPin=9;
@@ -36,6 +42,8 @@ Servo leftFront_Motor;
 Servo leftBack_Motor;
 Servo rightBack_Motor;
 Servo rightFront_Motor;
+  
+ public:
 //-------------------------------------------
 char drive[]={'s','w','x','a','d','q','e'}; //stop, front, back, straight left, straight right, turn left, turn right
 char grabber[]={'r','f'}; //grab, release; switch later?
@@ -44,7 +52,7 @@ bool emergencySwitch=false;
 //-------------------------------------------
 char input;
 char command='';
-
+  
 void commandDirectory(char input);
 
 void grabberCommand(char input);
