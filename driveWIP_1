@@ -70,7 +70,7 @@ void commandDirectory(input){
         }
       }
       else if((i>0)&&(i<8)&&(emergencySwitch)){//drive
-        
+        driveCommand(input);
       }
       else if(((i==8)||(i==9))&&(emergencySwitch)){//grabber
         
@@ -83,44 +83,58 @@ void commandDirectory(input){
   
 }
 
+void grabberCommand(input){//check grabber spin orientation
+  if(){
+    
+  }
+  else if(){
+    
+  }
+}
 
 void driveCommand(input){
-    switch(input){ //switch to if and elif?? I don't understand the switch() and case this: format
-     case stop:
-        leftFront_Motor.write(SERVO_FWD_L);
-        leftBack_Motor.write(SERVO_FWD_L);
-        rightFront_Motor.write(SERVO_FWD_R);
-        rightBack_Motor.write(SERVO_FWD_R);
-     case forward:
-        leftFront_Motor.write(SERVO_FWD_L);
-        leftBack_Motor.write(SERVO_FWD_L);
-        rightFront_Motor.write(SERVO_FWD_R);
-        rightBack_Motor.write(SERVO_FWD_R);
-        break;
-      case backward:
-        leftFront_Motor.write(SERVO_);
-        leftBack_Motor.write(SERVO_);
-        rightFront_Motor.write(SERVO_);
-        rightBack_Motor.write(SERVO_);
-        break;
-      case right:
-        leftFront_Motor.write(SERVO_);
-        leftBack_Motor.write(SERVO_);
-        rightFront_Motor.write(SERVO_);
-        rightBack_Motor.write(SERVO_);
-        break;
-      case left:
-        leftFront_Motor.write(SERVO_);
-        leftBack_Motor.write(SERVO_);
-        rightFront_Motor.write(SERVO_);
-        rightBack_Motor.write(SERVO_);
-        break;
-      case stop:
-        leftFront_Motor.write(SERVO_STOP);
-        leftBack_Motor.write(SERVO_STOP);
-        rightFront_Motor.write(SERVO_STOP);
-        rightBack_Motor.write(SERVO_STOP);
-        break;
+     if(input==drive[0]){//stop
+          leftFront_Motor.write(SERVO_STOP);
+          leftBack_Motor.write(SERVO_STOP);
+          rightFront_Motor.write(SERVO_STOP);
+          rightBack_Motor.write(SERVO_STOP);
+        }
+     else if(input==drive[1]){//front
+          leftFront_Motor.write(SERVO_FWD_L);
+          leftBack_Motor.write(SERVO_FWD_L);
+          rightFront_Motor.write(SERVO_FWD_R);
+          rightBack_Motor.write(SERVO_FWD_R);
+        }
+      else if(input==drive[2]){//back
+          leftFront_Motor.write(SERVO_REV_L);
+          leftBack_Motor.write(SERVO_REV_L);
+          rightFront_Motor.write(SERVO_REV_R);
+          rightBack_Motor.write(SERVO_REV_R);
+        }
+      else if(input==drive[3]){//straight left
+          leftFront_Motor.write(SERVO_FWD_L);
+          leftBack_Motor.write(SERVO_REV_L);
+          rightFront_Motor.write(SERVO_REV_R);
+          rightBack_Motor.write(SERVO_FWD_R);
+        }
+      else if(input==drive[4]){//straight right
+          leftFront_Motor.write(SERVO_REV_L);
+          leftBack_Motor.write(SERVO_FWD_L);
+          rightFront_Motor.write(SERVO_FWD_R);
+          rightBack_Motor.write(SERVO_REV_R);
+        }
+      else if(input==drive[5]){//turn left
+          leftFront_Motor.write(SERVO_STOP);//edit?
+          leftBack_Motor.write(SERVO_STOP);//edit?
+          rightFront_Motor.write(SERVO_FWD_R);
+          rightBack_Motor.write(SERVO_FWD_R);
+        }
+        else if(input==drive[6]){//turn right
+          leftFront_Motor.write(SERVO_FWD_L);
+          leftBack_Motor.write(SERVO_FWD_L);
+          rightFront_Motor.write(SERVO_STOP);//edit?
+          rightBack_Motor.write(SERVO_STOP);//edit?
+        }
     }
   }
 
