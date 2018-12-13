@@ -11,22 +11,6 @@
 Sprint 2 code Header
 */
 
-//-------------------------------------------
-//check?
-#define SERVO_FWD_R 0 //FWD_R
-#define SERVO_REV_R 180 //REV_R
-
-#define SERVO_FWD_L 180 //FWD_L
-#define SERVO_REV_L 0 //REV_L
-
-#define SERVO_TurnR_L 135 //check and adjust
-#define SERVO_TurnR_R 45 
-
-#define SERVO_TurnL_R 45 //check and adjust
-#define SERVO_TurnL_L 135 
-
-#define SERVO_STOP 90 //STOP
-
 class DriveHeader{
 //Pin numbers to motors
 const int leftGrab_MotorPin=8;
