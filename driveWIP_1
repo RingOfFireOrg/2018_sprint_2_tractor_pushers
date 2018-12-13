@@ -29,7 +29,11 @@ To-Do List:
 #define SERVO_FWD_L 180 //FWD_L
 #define SERVO_REV_L 0 //REV_L
 
-//Need to specifically define turn L&R values here?
+#define SERVO_TurnR_L 135 //check and adjust
+#define SERVO_TurnR_R 45 
+
+#define SERVO_TurnL_R 45 //check and adjust
+#define SERVO_TurnL_L 135 
 
 #define SERVO_STOP 90 //STOP
 //-------------------------------------------
@@ -130,16 +134,16 @@ void driveCommand(char input){
           rightBack_Motor.write(SERVO_REV_R);
         }
       else if(input==drive[5]){//turn left
-          leftFront_Motor.write(SERVO_STOP);//edit?
-          leftBack_Motor.write(SERVO_STOP);//edit?
-          rightFront_Motor.write(SERVO_FWD_R);
-          rightBack_Motor.write(SERVO_FWD_R);
+          leftFront_Motor.write(SERVO_TurnL_L);//edit?
+          leftBack_Motor.write(SERVO_TurnL_L);//edit?
+          rightFront_Motor.write(SERVO_TurnL_R);
+          rightBack_Motor.write(SERVO_TurnL_R);
         }
         else if(input==drive[6]){//turn right
-          leftFront_Motor.write(SERVO_FWD_L);
-          leftBack_Motor.write(SERVO_FWD_L);
-          rightFront_Motor.write(SERVO_STOP);//edit?
-          rightBack_Motor.write(SERVO_STOP);//edit?
+          leftFront_Motor.write(SERVO_TurnR_L);
+          leftBack_Motor.write(SERVO_TurnR_L);
+          rightFront_Motor.write(SERVO_TurnR_R);//edit?
+          rightBack_Motor.write(SERVO_TurnR_R);//edit?
         }
     }
   }
