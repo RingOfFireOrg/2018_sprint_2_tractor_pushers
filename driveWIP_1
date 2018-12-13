@@ -29,15 +29,15 @@ To-Do List:
 #define SERVO_FWD_L 180 //FWD_L
 #define SERVO_REV_L 0 //REV_L
 
-//Need to define turn L&R values here
+//Need to specifically define turn L&R values here?
 
 #define SERVO_STOP 90 //STOP
 //-------------------------------------------
 //Pin numbers to motors
 const int leftGrab_MotorPin=8;
 const int rightGrab_MotorPin=9;
-const int leftFront_MotorPin=10;//check?
-const int leftBack_MotorPin=11;//check?
+const int leftFront_MotorPin=11;//check?
+const int leftBack_MotorPin=10;//check?
 const int rightFront_MotorPin=12;
 const int rightBack_MotorPin=13;
 
@@ -61,7 +61,7 @@ bool emergencySwitch=false;
 char input = ds.readInputIfAvailable();
 char command='';
 
-void commandDirectory(input){
+void commandDirectory(char input){
   char temp=drive+grabber;//0, 1-7, 8-9 for emergencyStop, drive, and grabber
   for(int i=0; i<10; i++){
     if(input==temp[i]){
@@ -87,7 +87,7 @@ void commandDirectory(input){
   
 }
 
-void grabberCommand(input){//check grabber spin orientation?
+void grabberCommand(char input){//check grabber spin orientation?
   if(input==grabber[0]){//grab
     leftGrab_Motor.write(SERVO_FWD_L);
     rightGrab_Motor.write(SERVO_FWD_R);
@@ -98,7 +98,7 @@ void grabberCommand(input){//check grabber spin orientation?
   }
 }
 
-void driveCommand(input){
+void driveCommand(char input){
      if(input==drive[0]){//stop
           leftFront_Motor.write(SERVO_STOP);
           leftBack_Motor.write(SERVO_STOP);
